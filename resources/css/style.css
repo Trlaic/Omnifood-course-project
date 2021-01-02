@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*ove stvari radim na pocetku svakog css fajla,iskljucim margine i padding*/
+}
+html{
+    background-color: #fff; /*ovo je i po difoltu ovako, ali eto*/
+    color: #555;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility; /*ovde biram da rendering engine (masina za prikazivanje) optimizuje kvalitet citljivosti naustrb
+                                        geometrijske preciznosti i brzine ucitavanja stranice (treba bit pazljiv s ovim svojstvom)*/
+} /*osnovna podesavanja za celu stranicu*/
+
+.row{ /* sadrzaj ce biti prikazivan u redovima */
+    max-width: 1140px; /* jedino ce ovo imati apsolutnu vrednost u pikselima*/
+    margin: 0 auto; /* centriram kontejner */
+}
