@@ -1,3 +1,8 @@
+/*
+Orange- #e67e22
+
+*/
+/*------------ BASIC SETUP --------------*/
 *{
     margin: 0;
     padding: 0;
@@ -13,7 +18,114 @@ html{
                                         geometrijske preciznosti i brzine ucitavanja stranice (treba bit pazljiv s ovim svojstvom)*/
 } /*osnovna podesavanja za celu stranicu*/
 
+/*------------ REUSABLE --------------*/
+
 .row{ /* sadrzaj ce biti prikazivan u redovima */
     max-width: 1140px; /* jedino ce ovo imati apsolutnu vrednost u pikselima*/
     margin: 0 auto; /* centriram kontejner */
+}
+
+/*------------ HEADINGS --------------*/
+
+h1{
+    margin-top:0;/*u normalize css fajlu je podesena margina za h1,to skidam*/
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 240%; /*procenti radi fleksibilnosti, ako promenim velicinu fonta u html selektoru ovo ce se automatski menjati*/
+    font-weight: 300; /*veb dizajn pravilo,veliki font-smanjim font-weight*/
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px; /*prethodna dva za bolji izgled*/
+}
+
+/*------------ BUTTONS --------------*/
+
+.btn:link,
+.btn:visited {
+    display: inline-block; /* a - inline element po difoltu */
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+   transition: background-color 0.2s,color 0.2s,border 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited{
+    background-color: #e67e22;
+    color: #fff;
+    border: 1px solid #e67e22;
+    margin-right: 15px;
+}
+.btn-ghost:link,
+.btn-ghost:visited{
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn:hover,
+.btn:active {
+   background-color: #cf6d17; /*kad predje preko "dugmeta" treba da se pojavi tamnija verzija boje koju sam dobio na sajtu 0to255*/
+}
+
+.btn-full:hover,
+.btn-full:active{
+    border: 1px solid #cf6d17; /*menjam boju i bordure,to ne smem zaboraviti, dakle da bude u skladu sa pozadinom dugmeta*/
+}
+.btn-ghost:link,
+.btn-ghost:visited{
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+/*------------ HEADER --------------*/
+
+header{
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg); /* ovo samo po sebi 
+    zauzme samo prostor predvidjen za header deo,mora height da se definise
+    ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentost da bi se videla
+    i ova ispod nje */
+    height: 100vh; /* ovo ynaci 100viewport,dakle ceo ekran zauzmi*/
+    background-size: cover;
+    background-position: center;
+}
+.hero-text-box{
+    position: absolute; /*absolute da bih mogao pozicionirati vertikalno i horizontalno */
+    width: 1140px; /* sirina kao red,to je izgleda standard za sajt po onom row, videcu jos kako ce se to koristiti*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); /*ovo pomeri 50% od sirine elementa ulevo i 50% od visine elementa nagore*/
+}
+
+.logo{
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px; /*odvojim logo od vrha stranice*/
+}
+
+.main-nav{
+    float: right;
+    list-style-type: none;
+    margin-top: 55px;
+}
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+.main-nav li a:link,
+.main-nav li a:visited {
+   /* height: 40px;
+    display: inline-block;*/ /*kad bi ovo uradio,pomerio bih tu donju borduru, to mi je i bio cilj da vidim*/
+    padding: 8px 0; /*ovako je on to resio,doda padding i pomeri borduru za 8 px od teksta linka*/ 
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent; /*ako hocu da se pojavi bordura na hoveru, ona mora biti definisana u normalnom stanju*/
+    transition: border-bottom 0.2s;
+}
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22; /*kad predjem link u listi da se pojavi donja bordura, to se radi cesto*/
 }
