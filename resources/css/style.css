@@ -25,17 +25,70 @@ html{
     margin: 0 auto; /* centriram kontejner */
 }
 
+section{
+    padding: 80px 0; /* ovo koristim zapravo za stvaranje whitespace-a izmedju sekcija, iako se cini logicnim da napravim margin
+                        ovako je potrebno, jer ce se kasnije dodati bg color sekcijama i ne treba nam belo izmedju
+                        pa se whitespace kreira unutar elemenata */
+}
+
+.box{ /*dodata klasa da ne bih menjao onu iz grid.css*/
+    padding: 1%;
+}
 /*------------ HEADINGS --------------*/
 
+h1,h2,h3{
+    font-weight: 300; /*veb dizajn pravilo,veliki font-smanjim font-weight*/
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 h1{
     margin-top:0;/*u normalize css fajlu je podesena margina za h1,to skidam*/
     margin-bottom: 15px;
     color: #fff;
     font-size: 240%; /*procenti radi fleksibilnosti, ako promenim velicinu fonta u html selektoru ovo ce se automatski menjati*/
-    font-weight: 300; /*veb dizajn pravilo,veliki font-smanjim font-weight*/
-    text-transform: uppercase;
-    letter-spacing: 1px;
     word-spacing: 4px; /*prethodna dva za bolji izgled*/
+}
+h2{
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2::after{ /* koristim ovu pseudo-klasu da dodam malu narandzastu liniju ispod naslova */
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: "";
+    margin: 0 auto; /* centriram, tako da bude ispod teksta lepo dizajnirano*/
+    width: 100px;
+    margin-top: 30px; /*odvajam liniju od h2 elementa, cudno malo jer se margin-bottom od h2 prenosi na deo ispod ove linije*/
+}
+
+h3{
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+
+/*------------ PARAGRAPHS --------------*/
+.long-copy{
+    line-height: 145%; /* ovo je neki max od preporuke*/
+    width: 70%; /*smanjujem sirinu zbog velikog broj znakova u jednom redu, ali to ne centrira novonastalu situaciju,treba da dodam
+                  posebne margine, tj. da njima dopunim do 100% od vel kontejnera*/
+    margin: 0 auto; /*moze ipak i ovako*/
+}
+.box p{
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/*------------ ICONS --------------*/
+.icon-big{ /*mogu da korigujem ikonice kao font,jer su one u sustini to*/
+    font-size: 350%;
+    display: block; /*da bi usledio line break, ne pravi nikakvu razliku u ovom slucaju,isto sve i bez njega*/
+    color: #e67e22;
+    margin-bottom: 10px;
 }
 
 /*------------ BUTTONS --------------*/
@@ -85,7 +138,7 @@ header{
     zauzme samo prostor predvidjen za header deo,mora height da se definise
     ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentost da bi se videla
     i ova ispod nje */
-    height: 100vh; /* ovo ynaci 100viewport,dakle ceo ekran zauzmi*/
+    height: 100vh; /* ovo znaci 100viewport,dakle ceo ekran zauzmi*/
     background-size: cover;
     background-position: center;
 }

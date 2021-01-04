@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="vendors/css/normalize.css"> <!--  Ovo stavljam pre da bi style.css imao prednost pri dizajniranju,
                                                                    ko ide ranije taj ima manju prednost ako dodje do override-a-->
     <link rel="stylesheet" href="vendors/css/grid.css">
+    <link rel="stylesheet" href="vendors/css/ionicons.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -25,16 +26,49 @@
             </div>
         </nav>
         <div class="hero-text-box">
-            <h1>Goodbye junk food.<br> Hello super healthy meals.</h1>
+            <h1>Goodbye junk food.<br>Hello super healthy meals.</h1>
             <a class="btn btn-full" href="#">I’m hungry </a> <!-- btn je klasa u kojoj definisem osnovne strane; +posebno-->
             <a class="btn btn-ghost" href="#">Show me more</a>
         </div>
     </header>
 
+    <section class="section-features">
+        <div class="row"><!-- deo za paragraf i heding, stavljam u row jer treba da budu centrirani, a to vec imam reseno-->
+            <h2>Get food fast &mdash; not fast food.</h2><!--jedan h1 po stranici pravilo-->
+            <p class="long-copy">Hello, we’re Omnifood, your new premium food delivery service.
+               We know you’re always<br> busy. No time for cooking. So let us take care of that, we’re really good at it, we promise!</p>
+        </div>
+        <div class="row"> <!--i ovaj deo mi treba centriran u celosti,to je omotac responzivnog grida -->
+            <div class="col span-1-of-4 box"> <!-- iz grid.css iz col float nalevo i width aproksimativno 25% -->
+                <i class="ion-ios-infinite-outline icon-big"></i> <!-- ikonica -->
+                <h3>Up to 365 days/year</h3>
+                <p>Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage.
+                   You can also choose to order more flexibly if that's your style.
+                </p>
+            </div>
+            <div class="col span-1-of-4 box">
+                <i class="ion-ios-stopwatch-outline icon-big"></i>
+                <h3>Ready in 20 minutes</h3>
+                <p>You're only twenty minutes away from your delicious and super healthy meals delivered right to your home.
+                   We work with the best chefs in each town to ensure that you're 100% happy.
+                </p>
+            </div>
+            <div class="col span-1-of-4 box">
+                <i class="ion-ios-nutrition-outline icon-big"></i>
+                <h3>100% organic</h3>
+                <p>All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics.
+                   Good for your health, the environment, and it also tastes better!
+                </p>
+            </div>
+            <div class="col span-1-of-4 box">
+                <i class="ion-ios-cart-outline icon-big"></i>
+                <h3>Order anything</h3>
+                <p>We don't limit your creativity, which means you can order whatever you feel like.
+                   You can also choose from our menu containing over 100 delicious meals. It's up to you!
+                </p>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
-1. Food delivery (Section 1)
-2. How it works (Section 3)
-3. Our cities (Section 4)
-4. Sign up (Section 6)
