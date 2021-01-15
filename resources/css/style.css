@@ -18,6 +18,13 @@ html{
                                         geometrijske preciznosti i brzine ucitavanja stranice (treba bit pazljiv s ovim svojstvom)*/
 } /*osnovna podesavanja za celu stranicu*/
 
+.clearfix::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
 /*------------ REUSABLE --------------*/
 
 .row{ /* sadrzaj ce biti prikazivan u redovima */
@@ -83,12 +90,47 @@ h3{
     line-height: 145%;
 }
 
+/*--------------------LINKS----------------*/
+a:link,
+a:visited{
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e67e22;
+    transition: color 0.2s border-bottom 0.2s;
+}
+
+a:hover,
+a:active{
+    color: #555;/*boja na pocetku postavljena za celu stranicu, siva*/
+    border-bottom: 1px solid transparent;
+}
+
+
+
 /*------------ ICONS --------------*/
 .icon-big{ /*mogu da korigujem ikonice kao font,jer su one u sustini to*/
     font-size: 350%;
     display: block; /*da bi usledio line break, ne pravi nikakvu razliku u ovom slucaju,isto sve i bez njega*/
     color: #e67e22;
     margin-bottom: 10px;
+}
+
+.icon-small{
+    display: inline-block; /*neophodno da bih mogao da ih korigujem kako hocu*/
+    width: 30px;/* ovo zapravo siri kontejner koji sadrzi ikonice, njih ne manja nikako(za to je potreban font-size), samim tim 
+                   ovo svojstvo omogucava poravnanje, stavi ikonice na centar kontejnera*/
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px;
+    /*secret to align icons and text*/
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -6px;
+    /*ovo gore cudno funkcionise, morao sam da navedem vertical-align da bi radilo margin-top, mada sam mogao i bez margin-top. umesto
+    toga je moglo odma vertical-align i tu trpam pixele koji pomeraju ikonicu gore ili dole-----ispravka, nisam mogao vertical-align
+    zato sto on manipulise okolnim tekstom, i njega pomera u odnosu na ikonicu koja je staticka u stvari*/
 }
 
 /*------------ BUTTONS --------------*/
@@ -141,9 +183,10 @@ header{
     height: 100vh; /* ovo znaci 100viewport,dakle ceo ekran zauzmi*/
     background-size: cover;
     background-position: center;
-    position: relative; /*ovaj deo je on ispustion u kursu, isprobavanjem sam došao do ovog, bez position:relative ovde 
+    position: relative; /*ovaj deo je on ispustio u kursu, isprobavanjem sam došao do ovog, bez position:relative ovde 
     element dete traži prvog sledećeg roditelja čija je pozicija relativna, i u ovom slučaju to je cela stranica. Ovim pozicioniranjem
     dobijem očekivane rezultate, element dete se pomera u skladu sa smanjivanjem/povećanjem ovog kontejnera*/
+    background-attachment:fixed;
 }
 .hero-text-box{ /*gornja napomena za position relative se odnosi na ovaj el. dete*/
     position: absolute; /*absolute da bih mogao pozicionirati vertikalno i horizontalno */
@@ -235,4 +278,100 @@ header{
 }
 
 
+/*---------------------HOW IT WORKS-------------------------*/
 
+.section-steps{
+    background-color: #f4f4f4; /*suptilna siva boja*/
+}
+
+.steps-box:first-child{ /*odnosi se na prvi stepsbox, tj. levu stranu*/
+    text-align: right; /*text-align nije samo za tekst, svi inline i inline-block elementi su obuhvaceni*/
+    padding-right: 3%; /*procenti za fluidni layout*/
+    margin-top:30px ;
+}
+.steps-box:last-child{
+    padding-left: 3%;
+    margin-top:70px ;/*popravljanje izgleda u odnosu na levu stranu*/
+}
+.app-screen{
+    width: 40%;/*40% od sirine kontejnera*/
+}
+.works-step{
+   /* overflow: hidden;*/ /*u prvi mah mi zatrebalo,cilj bio da element dete ima podjednako uvucene sve delove bez obzira da li se 
+                            nalazi pored ili ispod brojeva kojima je postavljen float*/
+    margin-bottom: 50px;
+}
+.works-step:last-of-type{
+    margin-bottom: 80px;
+}
+.works-step div{ /*dizajniranje u brauzeru,isprobavam*/
+   /* display: inline-block;*/ /*ovo je on stavio, ali to ne moze uz float,ignorise inline-block uz float i postavlja element svejedno
+                                na block*/
+    float: left;
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    height: 55px;
+    width: 55px;
+    padding: 5px; /*lepse pozicioniranje broja u okruglom okviru*/
+    text-align: center; /*pozicioniranje broja*/
+    border-radius: 50%; /*zaobljavanje,pravljenje kruga*/
+    font-size: 150%;
+    margin-right: 25px;
+}
+.btn-app:link,
+.btn-app:visited{/*ovo sam ubacio naknadno, kad sam uredio difolt linkove dodelio sam im borduru dole u ovim stanjima, ovako prekrivam */
+    border:0; /*ukini borduru*/
+}
+
+.btn-app img{
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/*-------------CITIES----------------*/
+.section-cities img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.city-feature{
+    margin-bottom: 5px;
+}
+
+
+/*---------------TESTIMONIALS---------------*/
+
+.section-testimonial{
+    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../img/back-customers.jpg);
+    background-size: cover;
+    color: white;
+    background-attachment:fixed;/*fin efekat za pozadinu*/
+}
+blockquote{
+    padding: 2%;
+    font-style: italic; /*ovo moze jer sam uvezao u link rel u html dokumentu*/
+    line-height: 145%;
+    position: relative; /*::before je njegovo dete, posto ima absolute, treba mi ovo*/
+    margin-top: 40px; /*odvajam od navodnika gornji deo*/
+}
+
+blockquote::before{
+    content:"\201C"; /*spec karakteri za otvorene navodnike,ima sajt glyphs*/
+    font-size: 500%;
+    display: block; /*inace nije block element,to nisam znao, ovako dodajem line break sto mi treba u ovom slucaju,inace ide uz tekst*/
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+cite{
+    font-size: 90%;
+    margin-top: 25px;
+    display: block; /*da bi dobio line break*/
+}
+cite img{
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle; /*poravnanje slike i imena*/
+}
