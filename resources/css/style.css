@@ -8,7 +8,8 @@ Orange- #e67e22
     padding: 0;
     box-sizing: border-box; /*ove stvari radim na pocetku svakog css fajla,iskljucim margine i padding*/
 }
-html{
+html,
+body{/*iz nekog razloga dodat body, nisam siguran koja je razlika*/
     background-color: #fff; /*ovo je i po difoltu ovako, ali eto*/
     color: #555;
     font-family: 'Lato', Arial, sans-serif;
@@ -16,6 +17,7 @@ html{
     font-size: 20px;
     text-rendering: optimizeLegibility; /*ovde biram da rendering engine (masina za prikazivanje) optimizuje kvalitet citljivosti naustrb
                                         geometrijske preciznosti i brzine ucitavanja stranice (treba bit pazljiv s ovim svojstvom)*/
+    overflow-x: hidden; /*dodato nakon propmatranja ekrana na 500px, tekst ispada iz diva*/
 } /*osnovna podesavanja za celu stranicu*/
 
 .clearfix::after{
@@ -81,7 +83,7 @@ h3{
 /*------------ PARAGRAPHS --------------*/
 .long-copy{
     line-height: 145%; /* ovo je neki max od preporuke*/
-    width: 70%; /*smanjujem sirinu zbog velikog broj znakova u jednom redu, ali to ne centrira novonastalu situaciju,treba da dodam
+    width: 70%; /*smanjujem sirinu zbog velikog broja znakova u jednom redu, ali to ne centrira novonastalu situaciju,treba da dodam
                   posebne margine, tj. da njima dopunim do 100% od vel kontejnera*/
     margin: 0 auto; /*moze ipak i ovako*/
 }
@@ -184,7 +186,7 @@ input[type=submit]:active{
 header{
     background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg); /* ovo samo po sebi 
     zauzme samo prostor predvidjen za header deo,mora height da se definise
-    ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentost da bi se videla
+    ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentnost da bi se videla
     i ova ispod nje */
     height: 100vh; /* ovo znaci 100viewport,dakle ceo ekran zauzmi*/
     background-size: cover;
@@ -260,7 +262,7 @@ header{
 }
 */  /* ovo je bio clearfix datog ul-a koji radi kako sam ocekivao*/
 .meals-showcase li{
-    display: block;
+    display: block; /*može i bez ovoga, float automatski daje elementu block svojstvo*/
     float: left;
     width: 25%;
 }
@@ -303,7 +305,7 @@ header{
     width: 40%;/*40% od sirine kontejnera*/
 }
 .works-step{
-   /* overflow: hidden;*/ /*u prvi mah mi zatrebalo,cilj bio da element dete ima podjednako uvucene sve delove bez obzira da li se 
+   /* overflow: hidden; */ /*u prvi mah mi zatrebalo,cilj bio da element dete ima podjednako uvucene sve delove bez obzira da li se 
                             nalazi pored ili ispod brojeva kojima je postavljen float*/
     margin-bottom: 50px;
 }
@@ -389,8 +391,8 @@ cite img{
 .plan-box{
     background-color: white;
     border-radius: 5px;
-    width: 90%; /*ovo svojstvo je cela poenat pravljenja ovog diva, nacin za menjanje sirine ove celine*/
-    margin: 5%; /*90+5+5 , radi i auto istovetno*/
+    width: 90%; /*ovo svojstvo je cela poenta pravljenja ovog diva, nacin za menjanje sirine ove celine*/
+    margin-left: 5%; /*90+5+5 , radi i auto istovetno*/
     box-shadow: 0 2px 2px rgb(248, 248, 248);/*x-osa,y-osa,blur, boja - mogu negativne vrednosti za x,y osu, ako hocu da menjam smer
                                 suptilna boja, box-shadow je cesto korisceno svojstvo*/
 }
@@ -437,7 +439,7 @@ cite img{
     margin:0 auto; /*sad ovo umesto margin left: 20%,radi isti poso*/
 }
 
-input[type=text],/*nvi selektor za mene*/
+input[type=text],/*novi selektor za mene*/
 input[type=email],
 select,
 textarea{
@@ -454,6 +456,9 @@ u hover delu ide i hover i active bez problema*/
 
 input[type=checkbox]{
     margin: 10px 5px 10px 0; /*formatiram cekboks za adekvatniji razmak izmedju elemenata*/
+}
+label.klasa{
+    vertical-align: -8px; /*ovo sam sam dodao da malo poravnam labele i input polja, nema u kursu*/
 }
 *:focus{outline: none;}/* izbacujem okvir koji se pojavljuje kad kliknem na input elemente, to chrome dodaje sam, nova pseudo klasa*/
 

@@ -1,0 +1,92 @@
+
+
+
+/*Big tablet to 1200px (widths smaller than 1140px row) */
+@media only screen and (max-width:1200px){
+    .hero-text-box{  
+        width: 100%; 
+        padding: 0 2%; /*ovo ce biti standard i za druge kontejnere, radi konzistencije,ovaj padding ostaje pod svim uslovima*/
+    }
+    .row{ padding: 0 2%; } /*za sve oblepljene row klasom radi poso, zato ima 
+                            smisla ovako koristiti jednu klasu kao paradigmu za celu stranicu, sad lakse uredjujem kompletnu stranu*/
+
+}
+
+/*Small tablets to big tablets: from 768px to 1023px*/
+@media only screen and (max-width:1023px){
+    body{ font-size: 18px; }/*dobra stvar sto su sve velicine fonta na celoj stranici u procentima, sad se sve automatksi menja*/
+    section{padding:60px 0 ;}/*bilo 80px, treba manje whitespacea na manjim uredjajima */
+    .long-copy{
+      /*  line-height: 145%;*/ /* ovo ne menjam pa ne moram ukljuciti ovde*/
+        width: 80%; /*sa 70%*/ 
+        margin: 0 auto; /*posto nisam stavljao procente ne diram nista, auto sam obavi*/
+    }
+
+
+    .steps-box:first-child{margin-top: 10px;}/*smanjujem razmak izmedju slike i h2 naslova*/
+    .steps-box:last-child{margin-top: 10px;}/*smanjujem razmak izmedju 3 koraka i h2 naslova*/
+    .works-step{margin-bottom: 40px;} /*smanjujem razmak izmedju koraka sa 50px*/
+    .works-step:last-of-type{margin-bottom: 60px;}/*izmedju poslednjeg koraka i dugmica sa 80px*/
+    .app-screen{width: 50%;}/*povecavam sirinu slike mobilnog sa 40%*/
+
+
+    .icon-small{ /*ovde "modelujem u brauzeru", odnosno cilj je da na svakoj sirini kreiram sto bolji izgled */
+        width: 17px; /*smanjujem sirinu ikonice sa 30px*/
+        margin-right: 2px; /*smanjujem marginu desno sa 10px, on je ostavio 5px, ali ne dobije kompletno kvalitetan rez na svakoj sirini*/
+    }
+    .city-feature{ font-size: 87%;} /*smanjujem font-size da bi stalo sve, on je ostavio na 90%, ali na manjim sirinama ne stoji lepo*/
+
+
+    .plan-box{
+        width: 100%; /*sirim div sa 90%*/
+        margin-left: 0%; /*margina bila 5% da centrira sadrzaj, vise ne treba*/
+    }
+    .plan-price{ font-size: 250%; } /*sa 300 na 250*/
+
+
+    .contact-form{ width: 80%; } /*sirim kontakt formu sa 60%*/
+}
+
+/*Small phones to small tablets: from 481px to 767px*/
+@media only screen and (max-width:767px){
+    body{font-size: 16px;} /*dodatno smanjim font*/
+    section{padding: 30px 0;} /*smanjujem whitespace jos*/
+
+    .row,
+    .hero-text-box{padding: 0 4%;}
+    .col{/*ne treba elementi da budu u jednom redu, vec da budu naslagani kao stek, ovo overrajduje span-of elemente
+        zato sto se nalazi u css fajlu koji je naveden posle grid.css u html dokumentu*/
+        width: 100%;
+        margin: 0 0 4% 0;/*u grid.css dokumentu postavljene neke margine, plus za prvo dete prva margina 0, to prepravim ovako
+                          i onda su svi poravnati u vertikali, imaju samo donju marginu za razdvajanje */
+    } 
+    h1{font-size: 180%;}
+    h2{font-size: 150%;}
+    h2::after{/*pomeram narand\astu linije gore, tj. smanjujem margin-top*/
+        margin-top: 13px;
+    }
+    .main-nav{display: none;} /*ne mogu da uskladim na stranici pa uklanjam navigaciju, kasnije ce biti reci o navigaciji na mobilinim
+                                uredjajima pomocu JQuery-a*/
+
+    .long-copy{ width: 100%; }
+
+    .steps-box:first-child{text-align: center;}
+    .works-step{margin-bottom: 20px;} 
+    .works-step:last-of-type{margin-bottom: 20px;}
+    .app-screen{width: 40%;}
+    .works-step div{ /*korigrujem krugove u 3 koraka delu*/
+         height: 40px;
+         width: 40px;
+         padding: 5px;  
+         font-size: 120%;
+         margin-right: 15px;
+     }
+}
+
+/*Small phones: from 0 to 480px*/
+@media only screen and (max-width:480px){
+    section{padding: 25px 0;}
+    .contact-form{width: 100%;}
+}
+
+
