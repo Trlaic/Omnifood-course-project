@@ -6,7 +6,8 @@ Orange- #e67e22
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /*ove stvari radim na pocetku svakog css fajla,iskljucim margine i padding*/
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; /*ove stvari radim na pocetku svakog css fajla,iskljucim margine i padding*/
 }
 html,
 body{/*iz nekog razloga dodat body, nisam siguran koja je razlika*/
@@ -99,6 +100,8 @@ a:visited{
     text-decoration: none;
     padding-bottom: 1px;
     border-bottom: 1px solid #e67e22;
+    -webkit-transition: color 0.2s border-bottom 0.2s;
+    -o-transition: color 0.2s border-bottom 0.2s;
     transition: color 0.2s border-bottom 0.2s;
 }
 
@@ -145,6 +148,8 @@ input[type=submit]{
     font-weight: 300;
     text-decoration: none;
     border-radius: 200px;
+   -webkit-transition: background-color 0.2s,color 0.2s,border 0.2s;
+   -o-transition: background-color 0.2s,color 0.2s,border 0.2s;
    transition: background-color 0.2s,color 0.2s,border 0.2s;
 }
 
@@ -184,6 +189,8 @@ input[type=submit]:active{
 /*------------ HEADER --------------*/
 
 header{
+    background-image:-o-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg);
+    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.7)),to(rgba(0,0,0,0.7))),url(img/hero.jpg);
     background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg); /* ovo samo po sebi 
     zauzme samo prostor predvidjen za header deo,mora height da se definise
     ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentnost da bi se videla
@@ -201,7 +208,9 @@ header{
     width: 1140px; /* sirina kao red,to je izgleda standard za sajt po onom row, videcu jos kako ce se to koristiti*/
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%); /*ovo pomeri 50% od sirine elementa ulevo i 50% od visine elementa nagore*/
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%); /*ovo pomeri 50% od sirine elementa ulevo i 50% od visine elementa nagore*/
 }
 
 .logo{
@@ -230,6 +239,8 @@ header{
     text-transform: uppercase;
     font-size: 90%;
     border-bottom: 2px solid transparent; /*ako hocu da se pojavi bordura na hoveru, ona mora biti definisana u normalnom stanju*/
+    -webkit-transition: border-bottom 0.2s;
+    -o-transition: border-bottom 0.2s;
     transition: border-bottom 0.2s;
 }
 .main-nav li a:hover,
@@ -276,13 +287,21 @@ header{
     opacity: 0.7; /*ovo svojstvo podesim da bih zatamnio sliku koriscenjem bg-color:black u elementu roditelju, ako ne stavim nema efekta */ 
     width: 100%;/* siroka koliko i kontejner, popravi velicinu slike da opskrbi kontejner pravom velicinom*/
     height: auto;/*ovo po difoltu, ni ne moram stavljati*/
-    transform: scale(1.15); /*ideja je da u pocetku bude vece,posle hover pa manje, u ovom stadijumu iskace iz granica brauzera po x osi
+    -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+            transform: scale(1.15); /*ideja je da u pocetku bude vece,posle hover pa manje, u ovom stadijumu iskace iz granica brauzera po x osi
                               zato moram gore overflow kontejnera da podesim*/
-    transition: transform 0.5s,opacity 0.5s; /*fini prelazi*/
+    -webkit-transition: opacity 0.5s,-webkit-transform 0.5s;
+    transition: opacity 0.5s,-webkit-transform 0.5s;
+    -o-transition: transform 0.5s,opacity 0.5s;
+    transition: transform 0.5s,opacity 0.5s;
+    transition: transform 0.5s,opacity 0.5s,-webkit-transform 0.5s; /*fini prelazi*/
 }
 .meal-photo img:hover{
     opacity: 1; /*ovim vracam originalnu sliku van uticaja bg colora,cilj je da se povrati svetlina*/
-    transform: scale(1.03); /*prvo scale(1) ali ostane bela linija ispod slike,ovako resen problem u hodu*/
+    -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+            transform: scale(1.03); /*prvo scale(1) ali ostane bela linija ispod slike,ovako resen problem u hodu*/
 }
 
 
@@ -350,6 +369,8 @@ header{
 /*---------------TESTIMONIALS---------------*/
 
 .section-testimonial{
+    background-image:-o-linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../img/back-customers.jpg);
+    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.8)),to(rgba(0,0,0,0.8))), url(../img/back-customers.jpg);
     background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../img/back-customers.jpg);
     background-size: cover;
     color: white;
@@ -393,7 +414,8 @@ cite img{
     border-radius: 5px;
     width: 90%; /*ovo svojstvo je cela poenta pravljenja ovog diva, nacin za menjanje sirine ove celine*/
     margin-left: 5%; /*90+5+5 , radi i auto istovetno*/
-    box-shadow: 0 2px 2px rgb(248, 248, 248);/*x-osa,y-osa,blur, boja - mogu negativne vrednosti za x,y osu, ako hocu da menjam smer
+    -webkit-box-shadow: 0 2px 2px rgb(248, 248, 248);
+            box-shadow: 0 2px 2px rgb(248, 248, 248);/*x-osa,y-osa,blur, boja - mogu negativne vrednosti za x,y osu, ako hocu da menjam smer
                                 suptilna boja, box-shadow je cesto korisceno svojstvo*/
 }
 
@@ -494,6 +516,8 @@ footer{
 .social-links a:visited{
     border: none;
     color: #888;
+    -webkit-transition: color 0.2s;
+    -o-transition: color 0.2s;
     transition: color 0.2s;
 }
 .footer-nav a:hover,
@@ -507,6 +531,8 @@ footer{
 .ion-social-twitter,
 .ion-social-googleplus,
 .ion-social-instagram{
+    -webkit-transition: color 0.2s;
+    -o-transition: color 0.2s;
     transition: color 0.2s;
 }
 
