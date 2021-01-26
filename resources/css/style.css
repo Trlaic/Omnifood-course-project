@@ -19,7 +19,13 @@ body{/*iz nekog razloga dodat body, nisam siguran koja je razlika*/
     text-rendering: optimizeLegibility; /*ovde biram da rendering engine (masina za prikazivanje) optimizuje kvalitet citljivosti naustrb
                                         geometrijske preciznosti i brzine ucitavanja stranice (treba bit pazljiv s ovim svojstvom)*/
     overflow-x: hidden; /*dodato nakon propmatranja ekrana na 500px, tekst ispada iz diva*/
+
 } /*osnovna podesavanja za celu stranicu*/
+
+html { /*kod linkova npr skroluje do odredjenog dela stranice koji je naznacen u linku, umesto da samo prebaci do tog dela strane
+    takodje je precica za neke druge jquery funkcije i razne pluginove*/
+scroll-behavior: smooth;
+}
 
 .clearfix::after{
     content: "";
@@ -189,9 +195,9 @@ input[type=submit]:active{
 /*------------ HEADER --------------*/
 
 header{
-    background-image:-o-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg);
-    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.7)),to(rgba(0,0,0,0.7))),url(img/hero.jpg);
-    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero.jpg); /* ovo samo po sebi 
+    background-image:-o-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero-min.jpg);
+    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.7)),to(rgba(0,0,0,0.7))),url(img/hero-min.jpg);
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(img/hero-min.jpg); /* ovo samo po sebi 
     zauzme samo prostor predvidjen za header deo,mora height da se definise
     ovako sam naveo dve pozadine,prva navedena ima prednost i prekriva drugu,stavio sam joj transparentnost da bi se videla
     i ova ispod nje */
@@ -219,7 +225,15 @@ header{
     float: left;
     margin-top: 20px; /*odvojim logo od vrha stranice*/
 }
-
+.logo-black{ 
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}/*dodato u delu sticky navigation,crna verzija logo slike*/
+/* main navigation*/
 .main-nav{
     float: right;
     list-style-type: none;
@@ -247,6 +261,43 @@ header{
 .main-nav li a:active {
     border-bottom: 2px solid #e67e22; /*kad predjem link u listi da se pojavi donja bordura, to se radi cesto*/
 }
+
+/*mobile navigation*/
+.mobile-nav-icon{
+    float: right;
+    margin-top: 30px;
+    cursor: pointer; /*ovo jeste link a, ali nema href, i zato treba definisati da se pojavi ova rukica*/
+    display: none; /*ne treba mi dok ne dodje do mob dimenzija*/
+}
+.mobile-nav-icon i{
+    font-size: 200%;
+    color: #fff;
+}
+
+/*sticky navigation*/
+.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    width: 100%; /*mora ovo da se naznaci, inace ima samo sirinu elemenata, koja je do pola ekrana, ocigledno svojstvo
+                  deteta div=row - max-width=1140px ne ide do krajnjih 1140px ako uzmem da uredjujem ovaj sticky nav,
+                   nego do sirine svoje dece*/
+    -webkit-box-shadow: 0 2px 2px #efefef;
+            box-shadow: 0 2px 2px #efefef;
+    z-index: 9999; /*max z idnex*/
+}
+.sticky .main-nav{ margin-top: 18px; }
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    padding: 16px 0; /*ovim pomeram narandzastu liniju za podvlacenje nadole*/
+    color: #555;
+}
+.sticky .logo-black{
+    display: block;
+}
+.sticky .logo{display: none;}
 
  /*------------------------FEATURES----------------------*/
 .section-features .long-copy{ /*koristicu long-copy klasu kasnije, ovo je posebno za ovu sekciju*/
@@ -369,9 +420,9 @@ header{
 /*---------------TESTIMONIALS---------------*/
 
 .section-testimonial{
-    background-image:-o-linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../img/back-customers.jpg);
-    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.8)),to(rgba(0,0,0,0.8))), url(../img/back-customers.jpg);
-    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(../img/back-customers.jpg);
+    background-image:-o-linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(img/back-customers-min.jpg);
+    background-image:-webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,0.8)),to(rgba(0,0,0,0.8))), url(img/back-customers-min.jpg);
+    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(img/back-customers-min.jpg);
     background-size: cover;
     color: white;
     background-attachment:fixed;/*fin efekat za pozadinu*/
@@ -527,6 +578,7 @@ footer{
 .social-links{
     font-size: 160%;
 }
+/*
 .ion-social-facebook,
 .ion-social-twitter,
 .ion-social-googleplus,
@@ -535,8 +587,8 @@ footer{
     -o-transition: color 0.2s;
     transition: color 0.2s;
 }
-
-
+suvisno
+*/
 .ion-social-facebook:hover{
     color: #3b5999;
 }
@@ -553,4 +605,26 @@ footer p{
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+}
+
+/*----------------ANIMATIONS-----------------*/
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3
+{ /*sakrivam sadrzaj radi adekvatne aplikacije animacije fadeIn*/
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s; /*cilj da ubrzam izvodjenje animacija*/
+    opacity: 0;
+}
+.js--wp-4{
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+}
+/*  */
+.js--wp-1.animate__animated,
+.js--wp-2.animate__animated,
+.js--wp-3.animate__animated{ /*nakon dodavanja animate__animated klase pomocu js-a kreiram ovakav selektor, ovo u stvari 
+                             znaci da selektuje element koji ima i klasu js--wp-1 i klasu animate__animated */
+    opacity: 1;
 }

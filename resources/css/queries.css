@@ -59,14 +59,39 @@
         width: 100%;
         margin: 0 0 4% 0;/*u grid.css dokumentu postavljene neke margine, plus za prvo dete prva margina 0, to prepravim ovako
                           i onda su svi poravnati u vertikali, imaju samo donju marginu za razdvajanje */
+
     } 
     h1{font-size: 180%;}
     h2{font-size: 150%;}
-    h2::after{/*pomeram narand\astu linije gore, tj. smanjujem margin-top*/
+    h2::after{/*pomeram narandzastu liniju gore, tj. smanjujem margin-top*/
         margin-top: 13px;
     }
     .main-nav{display: none;} /*ne mogu da uskladim na stranici pa uklanjam navigaciju, kasnije ce biti reci o navigaciji na mobilinim
                                 uredjajima pomocu JQuery-a*/
+    .mobile-nav-icon{display: inline-block;}
+    .main-nav{    
+        float: left;
+        margin-top: 35px;
+        margin-left: 25px;
+    }
+    .main-nav li{display: block;}
+    .main-nav li a:link,
+    .main-nav li a:visited{
+        display: block;
+        border: 0; /*ne treba bordura, ne moze hover na mob uredjajima*/
+        font-size: 100%;
+        padding: 10px 0;
+    }
+    .sticky .main-nav{ margin-top: 10px; }
+    .sticky .main-nav li a:link,
+    .sticky .main-nav li a:visited {
+        padding: 10px 0; /*ovim pomeram narandzastu liniju za podvlacenje nadole*/
+        color: #555;
+    }
+    .sticky .mobile-nav-icon{
+        margin-top:10px ;
+    }
+    .sticky .mobile-nav-icon i{color: #555;}
 
     .long-copy{ width: 100%; }
 
@@ -80,6 +105,7 @@
          padding: 5px;  
          font-size: 120%;
          margin-right: 15px;
+
      }
 }
 
